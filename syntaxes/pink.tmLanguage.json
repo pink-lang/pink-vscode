@@ -1,0 +1,97 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Pink",
+	"scopeName": "source.pink",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"name": "constant.numeric.pink",
+			"match": "[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)"
+		},
+		{
+			"name": "entity.name.type",
+			"match": "(?:\\b(uint8|uint16|uint32|uint64|int8|int16|int32|int64|float|string|bool|char|uchar|schar|short|ushort|int|uint|long|ulong|llong|ullong|double)|\\b\\w+\\s\\b(?=\\w+ ?=)\\b)"
+		},
+		{
+			"name": "entity.name.function",
+			"match": "[^\\d(.][\\w$_]+\\h*(?=\\()"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.pink",
+					"match": "\\b(if|else|void|return|true|false|null|func|var|const|struct|import|while|for|break|continue|typedef)\\b"
+				},
+				{
+					"name": "keyword.operator",
+					"match": "(?<!/)/{1}(?!/)|\\+|\\*|\\?|\\||\\^|-|&|<|>|=|:|!|!="
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"include": "#string-double"
+				},
+				{
+					"include": "#string-single"
+				}
+			]
+		},
+		"string-double": {
+			"name": "string.quoted.double.pink",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"include": "#string-escape-character"
+				}
+			]
+		},
+		"string-single": {
+			"name": "string.quoted.single.pink",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"include": "#string-escape-character"
+				}
+			]
+		},
+		"string-escape-character": {
+			"name": "constant.character.escape.pink",
+			"match": "\\\\.",
+			"patterns": []
+		},
+		"comments": {
+			"patterns": [
+				{
+					"include": "#comment-block"
+				},
+				{
+					"include": "#comment-line"
+				}
+			]
+		},
+		"comment-line": {
+			"name": "comment.line.double-slash.pink",
+			"match": "//.*"
+		},
+		"comment-block": {
+			"name": "comment.block.pink",
+			"begin": "/\\*",
+			"end": "\\*/",
+			"patterns": []
+		}
+	}
+}

@@ -1,0 +1,25 @@
+{
+  "name": "pink-language",
+  "displayName": "Pink language",
+  "description": "VScode extension for the Pink programming language. ",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "pink",
+      "aliases": ["Pink", "pink"],
+      "extensions": [".pink"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "pink",
+      "scopeName": "source.pink",
+      "path": "./syntaxes/pink.tmLanguage.json"
+    }]
+  }
+}
